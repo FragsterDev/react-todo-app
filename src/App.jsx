@@ -22,8 +22,7 @@ function App() {
     const newTodoList = todos.filter((todo, todoIndex) => {
       return todoIndex !== index
     })
-
-    setTodo(newTodoList)
+    setTodo(newTodoList);
   }
 
   // handleEditTodo(index){
