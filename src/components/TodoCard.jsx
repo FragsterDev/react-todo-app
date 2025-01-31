@@ -2,7 +2,7 @@
 function TodoCard(props) {
 
   // eslint-disable-next-line react/prop-types
-  const { children , handleDeleteTodo, index } = props
+  const { children , handleDeleteTodo, index, handleEditTodo } = props
 
 
 
@@ -10,7 +10,9 @@ function TodoCard(props) {
     <li className="todoItem">
         <div className="actionsContainer">
           {children}
-          <button>
+          <button onClick={() => {
+            handleEditTodo(index)
+          }}>
             <i className="fa-solid fa-pen-to-square"></i>
           </button>
           <button onClick={() => {

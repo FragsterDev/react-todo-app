@@ -15,6 +15,7 @@ function App() {
 
   function handleAddTodo(newTodo){
     const newTodoList = [...todos, newTodo]
+    persistData(newTodoList)
     setTodo(newTodoList)
   }
 
@@ -25,14 +26,21 @@ function App() {
     setTodo(newTodoList);
   }
 
-  // handleEditTodo(index){
+  function handleEditTodo(index){
+    const valueToBeEdited = todos[index]
+    setTodoValue(valueToBeEdited)
+    handleDeleteTodo(index)
 
-  // }
+  }
+
+  function persistData(newList) {
+    localStorage.setItem('todos', JSON.stringify({todos: newList}))
+  }
 
   return (
     <main>
       <TodoInput handleAddTodo={handleAddTodo} setTodoValue={setTodoValue} todoValue = {todoValue}/>
-      <TodoList todos={todos} handleDeleteTodo={handleDeleteTodo}/>
+      <TodoList todos={todos} handleDeleteTodo={handleDeleteTodo} handleEditTodo={handleEditTodo}/>
     </main>
   )
 }
